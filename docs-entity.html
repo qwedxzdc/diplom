@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+
+<!-- Compiled and minified CSS -->
+<!--suppress ALL -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.collapsible');
+        var instances = M.Collapsible.init(elems, {});
+    });
+</script>
+<!--suppress ALL -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Docs Generator v0.5</title>
+</head>
+<body>
+
+<div class="container">
+    <h1>Entities</h1>
+
+    <ul class="collapsible" th:each="entity: ${entities}">
+        <li>
+            <div class="collapsible-header">
+                <span th:text="${entity.name}"></span>
+            </div>
+            <div class="collapsible-body">
+                <table class="striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="arg: ${entity.paramList}">
+                        <td th:text="${arg.first}"></td>
+                        <td th:text="${arg.second}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</body>
+</html>
